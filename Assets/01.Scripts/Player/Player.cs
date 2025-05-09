@@ -7,12 +7,15 @@ public class Player : MonoBehaviour
     Animator animator = null;
     Rigidbody2D _rigidbody = null;
 
-    public float flapForce = 6f; // 점프 파워
-    public float forwardSpeed = 3f; // 정면이동 스피드
-    public bool isDead = false;
+    public float jumpForce = 6f; // 점프 파워
+    public float speed = 3f; // 정면이동 스피드
+    public int hp = 10;
+    public bool isSliding = false;
+    public bool IsJump = false;
+    public bool IsRun = false;
     float deathCooldown = 0f;
 
-    bool isFlap = false;
+    public bool IsDie = false;
 
     public bool godMode = false;
 
@@ -34,7 +37,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (isDead)
+        if (IsDie)
         {
             if (deathCooldown <= 0)
             {
@@ -52,23 +55,23 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                isFlap = true;
+                IsRun = true;
             }
         }
     }
 
     public void FixedUpdate()
     {
-        if (isDead)
+        if (IsDie)
             return;
 
         Vector3 velocity = _rigidbody.velocity;
-        velocity.x = forwardSpeed;
+        velocity.x = speed;
 
-        if (isFlap)
+        if (IsRun)
         {
-            velocity.y += flapForce;
-            isFlap = false;
+            velocity.y += speed;
+            IsRun = false;
         }
 
         _rigidbody.velocity = velocity;
@@ -82,11 +85,11 @@ public class Player : MonoBehaviour
         if (godMode)
             return;
 
-        if (isDead)
+        if (IsDie)
             return;
 
         animator.SetInteger("IsDie", 1);
-        isDead = true;
+        IsDie = true;
         deathCooldown = 1f;
     }
 }
