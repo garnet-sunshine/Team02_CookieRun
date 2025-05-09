@@ -272,7 +272,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d87a6b569d4874db47f09d85a1a9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
+  itemType: 0
+  speedBoostAmount: 3
+  speedBoostDuration: 5
+  giantScaleMultiplier: 2
+  giantDuration: 5
+  healAmount: 20
 --- !u!1 &546248599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,8 +1256,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 449611525240902203, guid: 69505146d40f4b945bde2928c9e293b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764058185671222960}
   m_SourcePrefab: {fileID: 100100000, guid: 69505146d40f4b945bde2928c9e293b5, type: 3}
+--- !u!1 &764058185671222959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 449611525240902203, guid: 69505146d40f4b945bde2928c9e293b5, type: 3}
+  m_PrefabInstance: {fileID: 764058185671222958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &764058185671222960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764058185671222959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d87a6b569d4874db47f09d85a1a9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  speedBoostAmount: 3
+  speedBoostDuration: 5
+  giantScaleMultiplier: 2
+  giantDuration: 5
+  healAmount: 20
 --- !u!1001 &1398080447038193031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1308,8 +1339,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 867368971292807376, guid: 99b773b66c776ad4f8c7a2320d989a37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1398080447038193033}
   m_SourcePrefab: {fileID: 100100000, guid: 99b773b66c776ad4f8c7a2320d989a37, type: 3}
+--- !u!1 &1398080447038193032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 867368971292807376, guid: 99b773b66c776ad4f8c7a2320d989a37, type: 3}
+  m_PrefabInstance: {fileID: 1398080447038193031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1398080447038193033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398080447038193032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d87a6b569d4874db47f09d85a1a9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 1
+  speedBoostAmount: 3
+  speedBoostDuration: 5
+  giantScaleMultiplier: 2
+  giantDuration: 5
+  healAmount: 20
 --- !u!1001 &4125124226717279326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1365,8 +1422,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7854040697560631421, guid: 3b9d5bd426232a740825d8a93b7ab027, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4125124226717279328}
   m_SourcePrefab: {fileID: 100100000, guid: 3b9d5bd426232a740825d8a93b7ab027, type: 3}
+--- !u!1 &4125124226717279327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7854040697560631421, guid: 3b9d5bd426232a740825d8a93b7ab027, type: 3}
+  m_PrefabInstance: {fileID: 4125124226717279326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4125124226717279328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4125124226717279327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d87a6b569d4874db47f09d85a1a9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 2
+  speedBoostAmount: 3
+  speedBoostDuration: 5
+  giantScaleMultiplier: 2
+  giantDuration: 5
+  healAmount: 20
 --- !u!1001 &4310004972814016945
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 716642415721274684}
   - component: {fileID: 27286334967680251}
   - component: {fileID: 8584008809540012013}
+  - component: {fileID: 5478384579694126331}
   m_Layer: 0
   m_Name: BoostItem
   m_TagString: Untagged
@@ -130,3 +131,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.728, y: 1.024}
   m_EdgeRadius: 0
+--- !u!114 &5478384579694126331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449611525240902203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d87a6b569d4874db47f09d85a1a9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  speedBoostAmount: 3
+  speedBoostDuration: 5
+  giantScaleMultiplier: 2
+  giantDuration: 5
+  healAmount: 20
