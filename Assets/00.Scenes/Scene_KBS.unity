@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   speedBoostAmount: 3
-  sppedBoostDuration: 5
+  speedBoostDuration: 5
   giantScaleMultiplier: 2
   giantDuration: 5
   healAmount: 20
@@ -1171,7 +1171,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1572216324
@@ -1245,6 +1245,7 @@ MonoBehaviour:
   - {fileID: 2673501788583872443, guid: 9910f7def27792b4994a57bf4fe832a8, type: 3}
   coinCount: 10
   spacing: 1.5
+  scoreValue: 10
 --- !u!4 &1741846559
 Transform:
   m_ObjectHideFlags: 0
