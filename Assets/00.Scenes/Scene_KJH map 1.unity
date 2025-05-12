@@ -6614,6 +6614,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79b4f3dde9b4794f9ab62726a1f6580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+=======
+  _rigidbody: {fileID: 0}
+>>>>>>> Stashed changes
   forwardSpeed: 5
 --- !u!50 &927547314
 Rigidbody2D:
