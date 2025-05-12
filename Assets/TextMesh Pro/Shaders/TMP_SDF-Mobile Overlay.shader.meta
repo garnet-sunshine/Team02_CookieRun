@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 859d79b60c8c31648b3df9bd9eb23ca0
+=======
+guid: a02a7d8c237544f1962732b55a9aebf1
+>>>>>>> Stashed changes
 ShaderImporter:
   externalObjects: {}
   defaultTextures: []
