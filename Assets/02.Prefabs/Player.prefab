@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: -2607281245459690477}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,11 @@ MonoBehaviour:
   IsRun: 0
   IsDie: 0
   godMode: 0
+<<<<<<< Updated upstream
   characterRenderer: {fileID: 557301013874234542}
+=======
+  characterRenderer: {fileID: 0}
+>>>>>>> Stashed changes
   score: 0
   moveSpeed: 5
   maxHealth: 100
