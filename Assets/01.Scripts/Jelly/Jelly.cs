@@ -6,9 +6,9 @@ public class Jelly : MonoBehaviour
 {
     public GameObject[] coinsPrefab; // 코인 프리펩 연결
     public int scoreValue = 10; // 젤리 1개당 점수
-    
-    
-    // 2D 콜라이더가 Is Trigger로 설정된 경우 , 다른 콜라이더와 닿았을 때 실행됨
+
+
+>>>>>>> JaeHun
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) // 닿은 오브젝트의 Tag가 "Player"인지 확인 (플레이어만 반응하게 만들기 위한 조건문)
