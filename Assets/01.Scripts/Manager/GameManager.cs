@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("StartScene UI")]
     public GameObject startCanvas;
     public GameObject stageCanvas;
-    public GameObject loadingCanvas;
+    public GameObject[] loadingCanvas;
 
     [Header("GameScene UI")]
     public GameObject playCanvas;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject); // 파괴되지 않게
         }
         else
         {
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     public void OnClickStage(int stageIndex)
     {
         stageCanvas.SetActive(false);
-        loadingCanvas.SetActive(true);
+        loadingCanvas[stageIndex].SetActive(true);
         StartCoroutine(LoadStageAfterDelay(stageIndex));
     }
 
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-        string sceneName = "GameScene" + stageIndex; // GameScene1, GameScene2, GameScene3
+        string sceneName = "GameScene_" + stageIndex; // GameScene_0, GameScene_1, GameScene_2
         SceneManager.LoadScene(sceneName);
     }
 

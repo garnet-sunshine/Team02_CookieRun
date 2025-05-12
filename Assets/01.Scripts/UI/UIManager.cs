@@ -11,13 +11,13 @@ public class UIManager : MonoBehaviour
 
     private Button currentSelected;
     private bool suppressSliderCallback = false;
-    private bool isMuted = false; // 음소거 상태 추적
+    private bool isMuted = false; // 음소거 상태 확인
 
     void Start()
     {
         SetSelectedButton(bgmOnBtn);
         bgmSlider.value = 0.5f;
-        ApplyVolume(); // 시작 시 오디오 볼륨 반영
+        //ApplyVolume(); // 시작 시 오디오 볼륨 반영
     }
 
     void Update()
@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
     {
         isMuted = false;
         SetSelectedButton(bgmOnBtn);
-        ApplyVolume(); // 사운드 적용
+        //ApplyVolume(); // 사운드 적용
     }
 
     public void BGMOffClick()
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
         suppressSliderCallback = false;
 
         SetSelectedButton(bgmOffBtn);
-        ApplyVolume(); // 사운드 적용
+        //ApplyVolume(); // 사운드 적용
     }
 
     public void OnBGMSliderChanged(float value)
@@ -64,10 +64,10 @@ public class UIManager : MonoBehaviour
 
         isMuted = false;
         SetSelectedButton(bgmOnBtn);
-        ApplyVolume();
+        //ApplyVolume();
 
-        SoundManager.instance.SetBGMVolume(value);
-        SetSelectedButton(bgmOnBtn);
+        //SoundManager.instance.SetBGMVolume(value);
+        //SetSelectedButton(bgmOnBtn);
     }
 
     private void ApplyVolume()
