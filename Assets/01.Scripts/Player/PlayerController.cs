@@ -71,7 +71,7 @@ public class PlayerController : BaseController
         isSpeedBoosted = true;
         isDestroyMode = true;  // 파괴 모드 활성화
 
-        Debug.Log("Speed Boost 활성화!");
+      
         moveSpeed += amount;
 
         yield return new WaitForSeconds(duration);
@@ -80,7 +80,7 @@ public class PlayerController : BaseController
         isDestroyMode = false;
         isSpeedBoosted = false;
 
-        Debug.Log("Speed Boost 종료.");
+        SoundManager.PlayClip(SoundManager.instance.itemClip);
     }
 
     // 거대화
@@ -96,8 +96,6 @@ public class PlayerController : BaseController
     {
         isGiant = true;
         isDestroyMode = true;  // 파괴 모드 활성화
-
-        Debug.Log("거대화 시작!");
         transform.localScale = originalScale * multiplier;
 
         yield return new WaitForSeconds(duration);
@@ -106,7 +104,7 @@ public class PlayerController : BaseController
         isDestroyMode = false;
         isGiant = false;
 
-        Debug.Log("거대화 종료.");
+        SoundManager.PlayClip(SoundManager.instance.itemClip);
     }
 
     // 체력 회복
@@ -116,6 +114,6 @@ public class PlayerController : BaseController
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
 
-        Debug.Log($"체력 회복: +{healAmount}, 현재 체력: {currentHealth}");
+        SoundManager.PlayClip(SoundManager.instance.itemClip);
     }
 }
