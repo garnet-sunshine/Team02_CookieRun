@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
     public int hp = 10;
 
     public bool isSliding = false;
-    public bool IsJump = false;
-    public bool IsRun = false;
+    public bool isJump = false;
+    public bool isRun = false;
 
     float deathCooldown = 0f;
 
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                IsJump = true;
+                isJump = true;
             }
         }
     }
@@ -67,31 +67,27 @@ public class Player : MonoBehaviour
         if (IsDie)
             return;
 
-        animator.SetBool("IsRun", true);
+        animator.SetBool("isRun", true);
         Vector3 velocity = _rigidbody.velocity; // 직접 _rigidbody.velocity.x = ...처럼 쓰는 것은 불가능하기 때문
         velocity.x = speed; // rigidbody.velocity.x에 speed 값을 할당
 
-        if (IsJump) // 점프 중이라면
+        if (isJump) // 점프 중이라면
         {
-
+            animator.SetBool("isJump", true);
             velocity.y += speed; // rigidbody.velocity.y 값에 속도값을 더한다
+            isJump = false;
 
-            IsJump = false;
-            
-
+            Debug.Log("jump");
         }
 
         _rigidbody.velocity = velocity;
-
-        float angle = Mathf.Clamp((_rigidbody.velocity.y * 10f), -90, 90);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            IsRun = true;
+            isRun = true;
         }
 
         if (godMode)
@@ -99,9 +95,5 @@ public class Player : MonoBehaviour
 
         if (IsDie)
             return;
-
-        animator.SetInteger("IsDie", 1);
-        IsDie = true;
-        deathCooldown = 1f;
     }
 }
