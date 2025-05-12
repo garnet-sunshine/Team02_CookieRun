@@ -65,6 +65,9 @@ public class UIManager : MonoBehaviour
         isMuted = false;
         SetSelectedButton(bgmOnBtn);
         ApplyVolume();
+
+        SoundManager.instance.SetBGMVolume(value);
+        SetSelectedButton(bgmOnBtn);
     }
 
     private void ApplyVolume()
