@@ -44,8 +44,6 @@ GameObject:
   - component: {fileID: 4576790215467172}
   - component: {fileID: 8997822039896360702}
   - component: {fileID: 734871391135648833}
-  - component: {fileID: 5275491730937056435}
-  - component: {fileID: -2607281245459690477}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -108,16 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e957e4ba7f7034f8ac456208d49134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 6
-  speed: 3
-  hp: 10
-  isSliding: 0
-  IsJump: 0
-  IsRun: 0
-  IsDie: 0
-  godMode: 0
   characterRenderer: {fileID: 557301013874234542}
-  score: 0
   moveSpeed: 5
   maxHealth: 100
   currentHealth: 0
@@ -167,47 +156,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.85292256, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5275491730937056435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838234140547504343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca8caf74eb770f4489545ff72d6590e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 6
-  speed: 3
-  hp: 10
-  isSliding: 0
-  IsJump: 0
-  IsRun: 0
-  IsDie: 0
-  godMode: 0
---- !u!114 &-2607281245459690477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838234140547504343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8d60c8eb882d14aaa386012b9c86e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 6
-  speed: 3
-  hp: 10
-  isSliding: 0
-  IsJump: 0
-  IsRun: 0
-  IsDie: 0
-  godMode: 0
-  characterRenderer: {fileID: 0}
 --- !u!1 &5947965327678501546
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +238,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5581426893878457402
