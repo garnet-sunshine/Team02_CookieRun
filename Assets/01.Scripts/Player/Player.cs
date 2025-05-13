@@ -15,10 +15,6 @@ public class Player : MonoBehaviour
 
     public float jumpForce = 6f; // 점프 파워
     public float speed = 3f; // 정면이동 스피드
-    [SerializeField] private Slider hpbar;
-    
-    [SerializeField] private int hp = 100; // maxhp
-    [SerializeField] private int curHp = 100; // currenthp
 
     public bool isSliding = false;
     public bool isJump = false;
@@ -47,7 +43,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        hpbar.value = (float)curHp / (float)hp;
 
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
@@ -57,7 +52,7 @@ public class Player : MonoBehaviour
         JumpBtn.onClick.AddListener(OnClickJumpButton);
 
         SlideBtn = GetComponent<Button>();
-        SlideBtn.onClick.AddListener(OnClickJumpButton);
+        SlideBtn.onClick.AddListener(OnClickSlideButton);
 
         if (animator == null)
         {
@@ -90,10 +85,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
-            {
-                curHp -= 10;
-            }
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 isJump = true;
@@ -163,8 +154,4 @@ public class Player : MonoBehaviour
 
     }
 
-    private void HandleHp()
-    {
-        hpbar.value = (float)curHp / (float)hp;
-    }
 }
