@@ -2,6 +2,8 @@
   
 # 🎮 Unity 2D 마쉬런 게임 프로젝트
 
+> ![타이틀화면](https://github.com/garnet-sunshine/Team02_CookieRun/blob/main/%ED%83%80%EC%9D%B4%ED%8B%80%ED%99%94%EB%A9%B4.png)
+
 Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.  
 플레이어는 장애물을 피하고, 젤리와 아이템을 먹으며 점수를 획득합니다.
 
