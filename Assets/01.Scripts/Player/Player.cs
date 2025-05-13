@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
     Animator animator = null;
     Rigidbody2D _rigidbody = null;
+    BoxCollider2D boxCollider = null;
+    public Vector2 originalColliderSize;
+    public Vector2 slidingColliderSize;
 
     public float jumpForce = 6f; // 점프 파워
     public float speed = 3f; // 정면이동 스피드
@@ -25,6 +30,7 @@ public class Player : MonoBehaviour
     {
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
         if (animator == null)
         {
@@ -35,6 +41,8 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Not Founded Rigidbody");
         }
+        if (boxCollider == null)
+            Debug.LogError("Not Founded BoxCollider2D");
     }
 
     void Update()
@@ -58,6 +66,15 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 isJump = true;
+                //SoundManager.PlayClip(SoundManager.instance.jumpClip);
+
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+            {
+                isSliding = true;
+                //SoundManager.PlayClip(SoundManager.instance.slideClip);
             }
         }
     }
@@ -71,6 +88,7 @@ public class Player : MonoBehaviour
         Vector3 velocity = _rigidbody.velocity; // 직접 _rigidbody.velocity.x = ...처럼 쓰는 것은 불가능하기 때문
         velocity.x = speed; // rigidbody.velocity.x에 speed 값을 할당
 
+
         if (isJump) // 점프 중이라면
         {
             animator.SetBool("isJump", true);
@@ -80,7 +98,20 @@ public class Player : MonoBehaviour
             Debug.Log("jump");
         }
 
-        _rigidbody.velocity = velocity;
+        if (isSliding)
+        {
+            boxCollider.size = slidingColliderSize;
+            animator.SetBool("isSliding", true);
+
+            Debug.Log("sliding");
+        }
+        else
+        {
+            boxCollider.size = originalColliderSize;
+            isSliding = false;
+        }
+
+            _rigidbody.velocity = velocity;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -94,6 +125,10 @@ public class Player : MonoBehaviour
             return;
 
         if (IsDie)
+        {
+            //SoundManager.PlayClip(SoundManager.instance.dieClip);
             return;
+        }
+
     }
 }
