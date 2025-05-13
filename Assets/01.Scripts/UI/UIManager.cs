@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -9,13 +7,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button bgmOnBtn;
     [SerializeField] private Button bgmOffBtn;
     [SerializeField] private Slider bgmSlider;
+    [SerializeField] private AudioSource bgmAudio; // 오디오 소스 추가
 
     private Button currentSelected;
     private bool suppressSliderCallback = false;
+    private bool isMuted = false; // 음소거 상태 확인
 
     void Start()
     {
-        bgmSlider.value = .5f;
+        SetSelectedButton(bgmOnBtn);
+        bgmSlider.value = 0.5f;
+        //ApplyVolume(); // 시작 시 오디오 볼륨 반영
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class UIManager : MonoBehaviour
 
             if (clicked == bgmSlider.gameObject)
             {
-                EventSystem.current.SetSelectedGameObject(currentSelected.gameObject);
+                SetSelectedButton(bgmOnBtn);
                 return;
             }
 
@@ -39,22 +41,41 @@ public class UIManager : MonoBehaviour
 
     public void BGMOnClick()
     {
+        isMuted = false;
         SetSelectedButton(bgmOnBtn);
+        //ApplyVolume(); // 사운드 적용
     }
 
     public void BGMOffClick()
     {
+        isMuted = true;
+
         suppressSliderCallback = true;
         bgmSlider.value = 0;
-        SetSelectedButton(bgmOffBtn);
         suppressSliderCallback = false;
+
+        SetSelectedButton(bgmOffBtn);
+        //ApplyVolume(); // 사운드 적용
     }
 
     public void OnBGMSliderChanged(float value)
     {
         if (suppressSliderCallback) return;
 
+        isMuted = false;
         SetSelectedButton(bgmOnBtn);
+        //ApplyVolume();
+
+        //SoundManager.instance.SetBGMVolume(value);
+        //SetSelectedButton(bgmOnBtn);
+    }
+
+    private void ApplyVolume()
+    {
+        if (bgmAudio != null)
+        {
+            bgmAudio.volume = isMuted ? 0f : bgmSlider.value;
+        }
     }
 
     private void SetSelectedButton(Button btn)
@@ -63,3 +84,5 @@ public class UIManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(btn.gameObject);
     }
 }
+
+
