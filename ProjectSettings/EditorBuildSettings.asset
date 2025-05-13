@@ -6,30 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00.Scenes/Scene_LSJ.unity
-    guid: 17f263cb7e57f2040be79d20b0a9c9dc
-  - enabled: 0
-    path: Assets/00.Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/00.Scenes/Scene_JSD.unity
-    guid: 628778f03d1398940aca0f701244fe25
-  - enabled: 1
-    path: Assets/00.Scenes/Scene_KJH.unity
-    guid: 48695f281bd203f4881908a57fb43441
-  - enabled: 1
-    path: Assets/00.Scenes/Scene_KJH map 1.unity
-    guid: 9dec5546a2e5f90418dc23b6a8458a07
-  - enabled: 1
-    path: Assets/00.Scenes/Scene_KJH map 2.unity
-    guid: 3d7ef9f7c7585e94f8e2b2a7547bb511
-  - enabled: 1
-    path: Assets/00.Scenes/Scene_KJH map 3.unity
-    guid: 7d48387835b40b14dacfdedbcde7f715
-  - enabled: 1
-    path: Assets/00.Scenes/Scene_KBS.unity
-    guid: 39d870b14627cfa45aa9e585241f47aa
-  - enabled: 0
     path: Assets/00.Scenes/StartScene.unity
     guid: aa53c948f21d4c048ba4b0e3e09486eb
+  - enabled: 1
+    path: Assets/00.Scenes/TutorialScene.unity
+    guid: 812e92e616a0b0f4497104e62ea290bc
+  - enabled: 1
+    path: Assets/00.Scenes/GameScene_0.unity
+    guid: 6d5c80917ccf1884482cae06af743a2d
+  - enabled: 1
+    path: Assets/00.Scenes/GameScene_1.unity
+    guid: e913dc6f43daa9a4aa320bec275aa492
+  - enabled: 1
+    path: Assets/00.Scenes/GameScene_2.unity
+    guid: f2ca78ae903bc4d41bee8314661868e2
   m_configObjects: {}
