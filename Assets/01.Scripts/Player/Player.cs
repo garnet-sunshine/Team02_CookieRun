@@ -115,6 +115,8 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isJump", true);
             velocity.y += speed; // rigidbody.velocity.y 값에 속도값을 더한다
+
+            animator.SetBool("isJump", false);
             isJump = false;
 
             Debug.Log("jump");
@@ -130,10 +132,11 @@ public class Player : MonoBehaviour
         else
         {
             boxCollider.size = originalColliderSize;
+            animator.SetBool("isSlding", false);
             isSliding = false;
         }
 
-            _rigidbody.velocity = velocity;
+        _rigidbody.velocity = velocity;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
