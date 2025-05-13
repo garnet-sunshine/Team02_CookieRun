@@ -40,6 +40,46 @@ Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.
 
 ---
 
+<code>
+  
+## 📂 프로젝트 구조 예시
+
+Assets/
+├── Scripts/
+│ ├── Managers/
+│ │ ├── GameManager.cs
+│ │ ├── UIManager.cs
+│ │ ├── ItemManager.cs
+│ │ ├── MapManager.cs
+│ │ ├── ScoreManager.cs
+│ │ └── SoundManager.cs
+│ │ ├── └── SoundSource.cs
+│ ├── Player/
+│ │ ├── BaseController.cs
+│ │ ├── Player.cs
+│ │ ├── FollowCamera.cs
+│ │ └── PlayerController.cs
+│ ├── Item/
+│ │ ├── Item.cs
+│ └── Jelly/
+│ └── Jelly.cs
+│ ├── BackGround/
+│ │ ├── bgLooper.cs
+│ │ ├── BGMove.cs
+│ │ └── TextCamera.cs
+├── Prefabs/
+├── Scenes/
+│ │ ├── StartScene
+│ │ ├── TutorialScene
+│ │ ├── SampleScene
+│ │ └── Scenme map 1,2,3
+├── UI/
+│ │ └── TextCamera.cs
+
+</code>
+
+---
+
 ## 🛠️ 사용 기술
 
 - Unity 2D를 활용한 캐릭터 이동 및 점프 구현
@@ -76,6 +116,11 @@ Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.
 ### 💻 프로그래밍
 - C# 스크립트
 - `Coroutine`, `GetComponent`, `PlayerPrefs`
+
+### 🎵 사용된 사운드
+- 8bit Style Music by [Lafayette](https://opengameart.org/users/lafayette)
+- Source: [OpenGameArt.org](https://opengameart.org/content/8bit-style-music)
+- License: CC0 (Free for commercial use, no attribution required)
 
 ### 🔧 게임 시스템
 - 캐릭터 이동 및 점프
@@ -134,34 +179,6 @@ Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.
 | 부스트 | 이동 속도 증가 |
 | 거대화 | 캐릭터 크기 확대 |
 | 체력 회복 | 잃은 체력 일부 회복 |
-
----
-
-<code>
-## 📂 프로젝트 구조 예시
-Assets/
-├── Scripts/
-│ ├── Managers/
-│ │ ├── GameManager.cs
-│ │ ├── ScoreManager.cs
-│ │ └── SoundManager.cs
-│ ├── Player/
-│ │ ├── BaseController.cs
-│ │ ├── Player.cs
-│ │ └── PlayerController.cs
-│ ├── Item/
-│ │ ├── Item.cs
-│ │ └── ItemManager.cs
-│ └── Jelly/
-│ └── Jelly.cs
-├── Prefabs/
-├── Scenes/
-├── UI/
-└── Sounds/
-</code>
-yaml
-복사
-편집
 
 ---
 
