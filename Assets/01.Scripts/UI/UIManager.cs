@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button bgmOffBtn;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private AudioSource bgmAudio; // 오디오 소스 추가
+    [SerializeField] private Slider healthSlider; // 체력바 슬라이더
 
     private Button currentSelected;
     private bool suppressSliderCallback = false;
@@ -39,6 +40,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void UpdateHealth(int currentHealth, int MaxHealth)
+    {
+        if (healthSlider != null)
+        {
+            healthSlider.value = (float)currentHealth / MaxHealth;
+        }
+    }
+
     public void BGMOnClick()
     {
         isMuted = false;
@@ -55,7 +64,7 @@ public class UIManager : MonoBehaviour
         suppressSliderCallback = false;
 
         SetSelectedButton(bgmOffBtn);
-        //ApplyVolume(); // 사운드 적용
+        ApplyVolume(); // 사운드 적용
     }
 
     public void OnBGMSliderChanged(float value)
@@ -64,10 +73,10 @@ public class UIManager : MonoBehaviour
 
         isMuted = false;
         SetSelectedButton(bgmOnBtn);
-        //ApplyVolume();
+        ApplyVolume();
 
-        //SoundManager.instance.SetBGMVolume(value);
-        //SetSelectedButton(bgmOnBtn);
+        SoundManager.instance.SetBGMVolume(value);
+        SetSelectedButton(bgmOnBtn);
     }
 
     private void ApplyVolume()
