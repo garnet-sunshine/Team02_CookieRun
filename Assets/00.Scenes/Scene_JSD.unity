@@ -318,8 +318,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5494b1f05f963ee43bbb50b7b68728a6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 5494b1f05f963ee43bbb50b7b68728a6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -692,13 +692,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22471d8bb277f78488841373dacc48df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSource: {fileID: 1668348930}
-  sfxSource: {fileID: 252423005}
-  bgmMain: {fileID: 8300000, guid: 14fa5e7acb2f80f43abe887879dfda1d, type: 3}
-  jumpClip: {fileID: 8300000, guid: 14f35e326f671484ab83b49d5ce546bb, type: 3}
-  slideClip: {fileID: 8300000, guid: ea27cff1b04f7bb46a9d7e6aa9ebb81a, type: 3}
+  soundEffectVolume: 0
+  soundEffectPitchVariance: 0
+  musicVolume: 0
+  musicClip: {fileID: 8300000, guid: 14fa5e7acb2f80f43abe887879dfda1d, type: 3}
   jellyClip: {fileID: 8300000, guid: 50fc820a99ad2014291de28d11f2794d, type: 3}
   itemClip: {fileID: 8300000, guid: 2f74e2c711d0aef43a8ce63fd0bf5c8c, type: 3}
+  jumpClip: {fileID: 8300000, guid: 14f35e326f671484ab83b49d5ce546bb, type: 3}
+  slideClip: {fileID: 8300000, guid: ea27cff1b04f7bb46a9d7e6aa9ebb81a, type: 3}
+  dieClip: {fileID: 8300000, guid: c4bbd6e1f8c23264aa00553c7a1551a0, type: 3}
+  soundSourcePrefab: {fileID: 0}
 --- !u!4 &1689631697
 Transform:
   m_ObjectHideFlags: 0
@@ -824,8 +827,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5494b1f05f963ee43bbb50b7b68728a6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 5494b1f05f963ee43bbb50b7b68728a6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
