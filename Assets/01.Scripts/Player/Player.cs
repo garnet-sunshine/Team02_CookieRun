@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
@@ -26,11 +27,20 @@ public class Player : MonoBehaviour
 
     public bool godMode = false;
 
+    Button button;
+
+    public void OnClickButton()
+    {
+        Debug.Log("Button Click");
+    }
+
     void Start()
     {
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        button = GetComponent<Button>();
+        button.onClick.AddListener(OnClickButton);
 
         if (animator == null)
         {
@@ -66,7 +76,7 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 isJump = true;
-                //SoundManager.PlayClip(SoundManager.instance.jumpClip);
+                //SoundManager.PlayClip(SoundManager.instance.jumpClip); 사운드매니저 삽입후 주석해제
 
 
             }
@@ -74,7 +84,7 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 isSliding = true;
-                //SoundManager.PlayClip(SoundManager.instance.slideClip);
+                //SoundManager.PlayClip(SoundManager.instance.slideClip); 사운드매니저 삽입후 주석해제
             }
         }
     }
@@ -126,9 +136,10 @@ public class Player : MonoBehaviour
 
         if (IsDie)
         {
-            //SoundManager.PlayClip(SoundManager.instance.dieClip);
+            //SoundManager.PlayClip(SoundManager.instance.dieClip); 사운드매니저 삽입후 주석해제
             return;
         }
 
     }
+
 }
