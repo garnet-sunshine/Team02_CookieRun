@@ -15356,6 +15356,7 @@ GameObject:
   - component: {fileID: 1973636605}
   - component: {fileID: 1973636604}
   - component: {fileID: 1973636603}
+  - component: {fileID: 1973636607}
   m_Layer: 5
   m_Name: GameCanvas
   m_TagString: Untagged
@@ -15448,6 +15449,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1973636607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973636602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8caf74eb770f4489545ff72d6590e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalColliderSize: {x: 0, y: 0}
+  slidingColliderSize: {x: 0, y: 0}
+  jumpForce: 6
+  speed: 3
+  hp: 10
+  isSliding: 0
+  isJump: 0
+  isRun: 0
+  IsDie: 0
+  godMode: 0
+  hpbar: {fileID: 220372554}
 --- !u!1001 &1979009911
 PrefabInstance:
   m_ObjectHideFlags: 0

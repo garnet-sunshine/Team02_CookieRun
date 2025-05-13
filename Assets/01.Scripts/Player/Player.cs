@@ -30,13 +30,6 @@ public class Player : MonoBehaviour
     Button JumpBtn;
     Button SlideBtn;
 
-    [SerializeField]
-    private Slider hpbar;
-
-    private float maxHp = 100;
-    private float curHp = 100;
-    
-
     public void OnClickJumpButton() // 점프버튼 실행시 나오는 이벤트
     {
         Debug.Log("JumpButton Click");
@@ -61,8 +54,6 @@ public class Player : MonoBehaviour
         SlideBtn = GetComponent<Button>();
         SlideBtn.onClick.AddListener(OnClickJumpButton);
 
-        hpbar.value = (float)curHp / (float)maxHp;
-
         if (animator == null)
         {
             Debug.LogError("Not Founded Animator");
@@ -78,11 +69,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
-        {
-            curHp -= 10;
-        }
-
         if (IsDie)
         {
             if (deathCooldown <= 0)
@@ -167,10 +153,4 @@ public class Player : MonoBehaviour
         }
 
     }
-
-    private void HandleHp()
-    {
-        hpbar.value = (float)curHp / (float)maxHp;
-    }
-
 }
