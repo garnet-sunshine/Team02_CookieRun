@@ -57,8 +57,8 @@ Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.
 
 - PlayerController가 BaseController를 상속하여 기능 확장
 - OnTriggerEnter2D + GetComponent<PlayerController>() 조합으로 충돌 처리:
-  - Item: 이동속도 증가, 크기 증가, 체력 회복
-  - Jelly: 점수 증가
+- Item: 이동속도 증가, 크기 증가, 체력 회복
+- Jelly: 점수 증가
 - 배경 오브젝트가 Looper와 충돌 시 가장 뒤쪽 배경으로 이동 → 무한 배경 생성 구현
 - 설정 UI에서 사운드 On/Off 버튼 및 볼륨 슬라이더 구현
 - Input, GetKeyDown 메서드를 통한 키보드 입력 처리
