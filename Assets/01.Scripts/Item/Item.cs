@@ -30,16 +30,19 @@ public class Item : MonoBehaviour
                     case ItemType.Boost:
                         Debug.Log("Boost 발동!");
                         player.IncreaseSpeed(speedBoostAmount, speedBoostDuration);
+                        SoundManager.PlayClip(SoundManager.instance.itemClip);
                         break;
                     // 거대화
                     case ItemType.BigJelly:
                         Debug.Log("Giant 발동!");
                         player.Grow(giantScaleMultiplier, giantDuration);
+                        SoundManager.PlayClip(SoundManager.instance.itemClip);
                         break;
                     // 체력회복
                     case ItemType.Heal:
                         Debug.Log("Heal 발동!");
                         player.Heal(healAmount);
+                        SoundManager.PlayClip(SoundManager.instance.itemClip);
                         break;
                 }
             }

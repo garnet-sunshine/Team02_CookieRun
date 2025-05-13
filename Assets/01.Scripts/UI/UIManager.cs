@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
         suppressSliderCallback = false;
 
         SetSelectedButton(bgmOffBtn);
-        //ApplyVolume(); // 사운드 적용
+        ApplyVolume(); // 사운드 적용
     }
 
     public void OnBGMSliderChanged(float value)
@@ -64,10 +64,10 @@ public class UIManager : MonoBehaviour
 
         isMuted = false;
         SetSelectedButton(bgmOnBtn);
-        //ApplyVolume();
+        ApplyVolume();
 
-        //SoundManager.instance.SetBGMVolume(value);
-        //SetSelectedButton(bgmOnBtn);
+        SoundManager.instance.SetBGMVolume(value);
+        SetSelectedButton(bgmOnBtn);
     }
 
     private void ApplyVolume()

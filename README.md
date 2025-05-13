@@ -2,6 +2,8 @@
   
 # 🎮 Unity 2D 마쉬런 게임 프로젝트
 
+> ![타이틀화면](https://github.com/garnet-sunshine/Team02_CookieRun/blob/main/%ED%83%80%EC%9D%B4%ED%8B%80%ED%99%94%EB%A9%B4.png)
+
 Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.  
 플레이어는 장애물을 피하고, 젤리와 아이템을 먹으며 점수를 획득합니다.
 
@@ -35,6 +37,46 @@ Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.
 ## 🖼️ 와이어프레임 구조도
 
 > ![구조도](https://github.com/garnet-sunshine/Team02_CookieRun/blob/main/%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84.png)
+
+---
+
+<code>
+  
+## 📂 프로젝트 구조 예시
+
+Assets/
+├── Scripts/
+│ ├── Managers/
+│ │ ├── GameManager.cs
+│ │ ├── UIManager.cs
+│ │ ├── ItemManager.cs
+│ │ ├── MapManager.cs
+│ │ ├── ScoreManager.cs
+│ │ └── SoundManager.cs
+│ │ ├── └── SoundSource.cs
+│ ├── Player/
+│ │ ├── BaseController.cs
+│ │ ├── Player.cs
+│ │ ├── FollowCamera.cs
+│ │ └── PlayerController.cs
+│ ├── Item/
+│ │ ├── Item.cs
+│ └── Jelly/
+│ └── Jelly.cs
+│ ├── BackGround/
+│ │ ├── bgLooper.cs
+│ │ ├── BGMove.cs
+│ │ └── TextCamera.cs
+├── Prefabs/
+├── Scenes/
+│ │ ├── StartScene
+│ │ ├── TutorialScene
+│ │ ├── SampleScene
+│ │ └── Scenme map 1,2,3
+├── UI/
+│ │ └── TextCamera.cs
+
+</code>
 
 ---
 
@@ -74,6 +116,11 @@ Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.
 ### 💻 프로그래밍
 - C# 스크립트
 - `Coroutine`, `GetComponent`, `PlayerPrefs`
+
+### 🎵 사용된 사운드
+- 8bit Style Music by [Lafayette](https://opengameart.org/users/lafayette)
+- Source: [OpenGameArt.org](https://opengameart.org/content/8bit-style-music)
+- License: CC0 (Free for commercial use, no attribution required)
 
 ### 🔧 게임 시스템
 - 캐릭터 이동 및 점프
@@ -132,34 +179,6 @@ Unity 2D 기능을 활용하여 제작한 러닝 게임입니다.
 | 부스트 | 이동 속도 증가 |
 | 거대화 | 캐릭터 크기 확대 |
 | 체력 회복 | 잃은 체력 일부 회복 |
-
----
-
-<code>
-## 📂 프로젝트 구조 예시
-Assets/
-├── Scripts/
-│ ├── Managers/
-│ │ ├── GameManager.cs
-│ │ ├── ScoreManager.cs
-│ │ └── SoundManager.cs
-│ ├── Player/
-│ │ ├── BaseController.cs
-│ │ ├── Player.cs
-│ │ └── PlayerController.cs
-│ ├── Item/
-│ │ ├── Item.cs
-│ │ └── ItemManager.cs
-│ └── Jelly/
-│ └── Jelly.cs
-├── Prefabs/
-├── Scenes/
-├── UI/
-└── Sounds/
-</code>
-yaml
-복사
-편집
 
 ---
 

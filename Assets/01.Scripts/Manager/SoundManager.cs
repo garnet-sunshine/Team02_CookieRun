@@ -23,7 +23,17 @@ public class SoundManager : MonoBehaviour
     // 초기 설정
     private void Awake()
     {
-        instance = this; // 싱글톤 인스턴스 등록
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // 씬이 바뀌어도 오브젝트 유지
+        }
+        else
+        {
+            Destroy(gameObject); // 중복 생성 방지
+            return;
+        }
+
         musicAudioSource = GetComponent<AudioSource>(); // 현재 오브젝트에 붙은 AudioSource를 가져옴
         musicAudioSource.volume = musicVolume; // 볼륨과 루프 설정
         musicAudioSource.loop = true;

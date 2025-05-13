@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject playCanvas;
     public GameObject gameOverCanvas;
 
+    [Header("Stage BGM")]
+    public AudioClip[] stageBGMs;
+
     private void Awake()
     {
         if (Instance == null)
@@ -51,6 +54,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadStageAfterDelay(int stageIndex)
     {
         yield return new WaitForSeconds(2f);
+
+        if (SoundManager.instance != null && stageIndex < stageBGMs.Length)
+        {
+            SoundManager.instance.ChangeBackGroundMusic(stageBGMs[stageIndex]);
+        }
 
         string sceneName = "GameScene_" + stageIndex; // GameScene_0, GameScene_1, GameScene_2
         SceneManager.LoadScene(sceneName);

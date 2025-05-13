@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
@@ -14,7 +15,10 @@ public class Player : MonoBehaviour
 
     public float jumpForce = 6f; // 점프 파워
     public float speed = 3f; // 정면이동 스피드
-    public int hp = 10;
+    [SerializeField] private Slider hpbar;
+    
+    [SerializeField] private int hp = 100; // maxhp
+    [SerializeField] private int curHp = 100; // currenthp
 
     public bool isSliding = false;
     public bool isJump = false;
@@ -26,11 +30,34 @@ public class Player : MonoBehaviour
 
     public bool godMode = false;
 
+    Button JumpBtn;
+    Button SlideBtn;
+
+    public void OnClickJumpButton() // 점프버튼 실행시 나오는 이벤트
+    {
+        Debug.Log("JumpButton Click");
+        isJump = true;
+    }
+
+    public void OnClickSlideButton() // 점프버튼 실행시 나오는 이벤트
+    {
+        Debug.Log("SlideButton Click");
+        isSliding = true;
+    }
+
     void Start()
     {
+        hpbar.value = (float)curHp / (float)hp;
+
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+
+        JumpBtn = GetComponent<Button>();
+        JumpBtn.onClick.AddListener(OnClickJumpButton);
+
+        SlideBtn = GetComponent<Button>();
+        SlideBtn.onClick.AddListener(OnClickJumpButton);
 
         if (animator == null)
         {
@@ -63,10 +90,14 @@ public class Player : MonoBehaviour
         }
         else
         {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                curHp -= 10;
+            }
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 isJump = true;
-                //SoundManager.PlayClip(SoundManager.instance.jumpClip);
+                //SoundManager.PlayClip(SoundManager.instance.jumpClip); 사운드매니저 삽입후 주석해제
 
 
             }
@@ -74,7 +105,7 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 isSliding = true;
-                //SoundManager.PlayClip(SoundManager.instance.slideClip);
+                //SoundManager.PlayClip(SoundManager.instance.slideClip); 사운드매니저 삽입후 주석해제
             }
         }
     }
@@ -116,19 +147,24 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isRun = true;
-        }
+        //if (collision.gameObject.CompareTag("Ground"))
+        //{
+        //    isRun = true;
+        //}
 
         if (godMode)
             return;
 
         if (IsDie)
         {
-            //SoundManager.PlayClip(SoundManager.instance.dieClip);
+            //SoundManager.PlayClip(SoundManager.instance.dieClip); 사운드매니저 삽입후 주석해제
             return;
         }
 
+    }
+
+    private void HandleHp()
+    {
+        hpbar.value = (float)curHp / (float)hp;
     }
 }
