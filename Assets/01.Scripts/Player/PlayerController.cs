@@ -6,6 +6,7 @@ public class PlayerController : BaseController
 {
     private Camera camera;
     private UIManager uiManager;
+    private HealthBar healthBar;
 
     // 점수
     public int score = 0;
@@ -33,7 +34,7 @@ public class PlayerController : BaseController
         currentHealth = maxHealth;
 
         uiManager = FindObjectOfType<UIManager>();
-        uiManager.UpdateHealth(currentHealth, maxHealth);
+        healthBar.UpdateHealth(currentHealth, maxHealth);
     }
 
     protected override void FixedUpdate()
@@ -61,7 +62,7 @@ public class PlayerController : BaseController
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         if (uiManager != null)
         {
-            uiManager.UpdateHealth(currentHealth, maxHealth); 
+            healthBar.UpdateHealth(currentHealth, maxHealth); 
         }
 
         if (currentHealth <= 0)
