@@ -27,11 +27,19 @@ public class Player : MonoBehaviour
 
     public bool godMode = false;
 
-    Button button;
+    Button JumpBtn;
+    Button SlideBtn;
 
-    public void OnClickButton()
+    public void OnClickJumpButton() // 점프버튼 실행시 나오는 이벤트
     {
-        Debug.Log("Button Click");
+        Debug.Log("JumpButton Click");
+        isJump = true;
+    }
+
+    public void OnClickSlideButton() // 점프버튼 실행시 나오는 이벤트
+    {
+        Debug.Log("SlideButton Click");
+        isSliding = true;
     }
 
     void Start()
@@ -39,8 +47,12 @@ public class Player : MonoBehaviour
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        button = GetComponent<Button>();
-        button.onClick.AddListener(OnClickButton);
+
+        JumpBtn = GetComponent<Button>();
+        JumpBtn.onClick.AddListener(OnClickJumpButton);
+
+        SlideBtn = GetComponent<Button>();
+        SlideBtn.onClick.AddListener(OnClickJumpButton);
 
         if (animator == null)
         {
@@ -126,10 +138,10 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isRun = true;
-        }
+        //if (collision.gameObject.CompareTag("Ground"))
+        //{
+        //    isRun = true;
+        //}
 
         if (godMode)
             return;
