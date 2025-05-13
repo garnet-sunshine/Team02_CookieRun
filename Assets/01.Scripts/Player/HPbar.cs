@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class HPbar : MonoBehaviour
 {
     [SerializeField] private Slider hpbar;
-    private float maxHp;
-    private float curHp;
+    private float maxHp = 100;
+    private float curHp = 100;
 
     // Start is called before the first frame update
     void Start()
