@@ -53,11 +53,12 @@ public class Player : MonoBehaviour
         _rigidbody = transform.GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
 
-        JumpBtn = GetComponent<Button>();
-        JumpBtn.onClick.AddListener(OnClickJumpButton);
+        JumpBtn = GameObject.Find("JumpButton").GetComponent<Button>();
+        SlideBtn = GameObject.Find("SlideButton").GetComponent<Button>();
 
-        SlideBtn = GetComponent<Button>();
-        SlideBtn.onClick.AddListener(OnClickJumpButton);
+        JumpBtn.onClick.AddListener(OnClickJumpButton);
+        SlideBtn.onClick.AddListener(OnClickSlideButton);
+    
 
         if (animator == null)
         {
