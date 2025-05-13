@@ -8,7 +8,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button bgmOffBtn;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private AudioSource bgmAudio; // 오디오 소스 추가
-    [SerializeField] private Slider healthSlider; // 체력바 슬라이더
 
     private Button currentSelected;
     private bool suppressSliderCallback = false;
@@ -37,14 +36,6 @@ public class UIManager : MonoBehaviour
             {
                 EventSystem.current.SetSelectedGameObject(currentSelected.gameObject);
             }
-        }
-    }
-
-    public void UpdateHealth(int currentHealth, int MaxHealth)
-    {
-        if (healthSlider != null)
-        {
-            healthSlider.value = (float)currentHealth / MaxHealth;
         }
     }
 
