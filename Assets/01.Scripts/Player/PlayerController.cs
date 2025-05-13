@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : BaseController
 {
     private Camera camera;
+    private UIManager uiManager;
+    private HealthBar healthBar;
 
     // 점수
     public int score = 0;
@@ -30,6 +32,9 @@ public class PlayerController : BaseController
         camera = Camera.main;
         originalScale = transform.localScale;
         currentHealth = maxHealth;
+
+        uiManager = FindObjectOfType<UIManager>();
+        healthBar.UpdateHealth(currentHealth, maxHealth);
     }
 
     protected override void FixedUpdate()
@@ -48,6 +53,21 @@ public class PlayerController : BaseController
         if (Mathf.Abs(horizontal) > 0.01f)
         {
             lookDirection = new Vector2(horizontal, 0).normalized;
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        if (uiManager != null)
+        {
+            healthBar.UpdateHealth(currentHealth, maxHealth); 
+        }
+
+        if (currentHealth <= 0)
+        {
+            Die(); 
         }
     }
 
@@ -79,8 +99,6 @@ public class PlayerController : BaseController
         moveSpeed -= amount;
         isDestroyMode = false;
         isSpeedBoosted = false;
-
-        SoundManager.PlayClip(SoundManager.instance.itemClip);
     }
 
     // 거대화
@@ -103,8 +121,6 @@ public class PlayerController : BaseController
         transform.localScale = originalScale;
         isDestroyMode = false;
         isGiant = false;
-
-        SoundManager.PlayClip(SoundManager.instance.itemClip);
     }
 
     // 체력 회복
@@ -113,7 +129,11 @@ public class PlayerController : BaseController
         currentHealth += healAmount;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+    }
 
-        SoundManager.PlayClip(SoundManager.instance.itemClip);
+    private void Die()
+    {
+        Debug.Log("Player가 사망했습니다!");
     }
 }
+

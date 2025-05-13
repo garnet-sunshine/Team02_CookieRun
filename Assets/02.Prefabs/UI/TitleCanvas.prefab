@@ -1643,6 +1643,7 @@ MonoBehaviour:
   bgmOffBtn: {fileID: 5042420780981354975}
   bgmSlider: {fileID: 7368641873404155610}
   bgmAudio: {fileID: 0}
+  healthSlider: {fileID: 7368641873404155610}
 --- !u!1 &2186639263838807683
 GameObject:
   m_ObjectHideFlags: 0
