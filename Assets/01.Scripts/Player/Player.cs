@@ -15,10 +15,6 @@ public class Player : MonoBehaviour
 
     public float jumpForce = 6f; // 점프 파워
     public float speed = 3f; // 정면이동 스피드
-    [SerializeField] private Slider hpbar;
-    
-    [SerializeField] private int hp = 100; // maxhp
-    [SerializeField] private int curHp = 100; // currenthp
 
     public bool isSliding = false;
     public bool isJump = false;
@@ -47,18 +43,16 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        hpbar.value = (float)curHp / (float)hp;
 
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
 
-        JumpBtn = GameObject.Find("JumpButton").GetComponent<Button>();
-        SlideBtn = GameObject.Find("SlideButton").GetComponent<Button>();
-
+        JumpBtn = GetComponent<Button>();
         JumpBtn.onClick.AddListener(OnClickJumpButton);
+
+        SlideBtn = GetComponent<Button>();
         SlideBtn.onClick.AddListener(OnClickSlideButton);
-    
 
         if (animator == null)
         {
@@ -91,10 +85,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
-            {
-                curHp -= 10;
-            }
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 isJump = true;
@@ -125,6 +115,8 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isJump", true);
             velocity.y += speed; // rigidbody.velocity.y 값에 속도값을 더한다
+
+            animator.SetBool("isJump", false);
             isJump = false;
 
             Debug.Log("jump");
@@ -140,10 +132,11 @@ public class Player : MonoBehaviour
         else
         {
             boxCollider.size = originalColliderSize;
+            animator.SetBool("isSlding", false);
             isSliding = false;
         }
 
-            _rigidbody.velocity = velocity;
+        _rigidbody.velocity = velocity;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -164,8 +157,4 @@ public class Player : MonoBehaviour
 
     }
 
-    private void HandleHp()
-    {
-        hpbar.value = (float)curHp / (float)hp;
-    }
 }
