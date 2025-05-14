@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b77de0a3bf87d84daa854c86261de62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseUIManager: {fileID: 0}
   startCanvas: {fileID: 85740481811313819, guid: 60c6698e9c168c24fa1973aa68a4af21, type: 3}
   stageCanvas: {fileID: 7094036534649525556, guid: f4ec70ff6a0a0404484a7d9f0a66ba1a, type: 3}
   loadingCanvas:
