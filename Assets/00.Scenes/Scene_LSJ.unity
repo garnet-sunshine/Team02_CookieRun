@@ -330,6 +330,7 @@ MonoBehaviour:
   - {fileID: 1458706625}
   playCanvas: {fileID: 8084273344227102056}
   gameOverCanvas: {fileID: 591829602173152064}
+  stageBGMs: []
 --- !u!4 &866733560
 Transform:
   m_ObjectHideFlags: 0
@@ -463,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6342452982509842336, guid: 8d6f1b4ce92d1dd4d8ab5a6701a9e657, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6583991104642975647, guid: 8d6f1b4ce92d1dd4d8ab5a6701a9e657, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
