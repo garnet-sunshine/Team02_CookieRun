@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +20,13 @@ public class Player : MonoBehaviour
 
     public bool isSliding = false;
     public bool isJump = false;
+    public bool isDoubleJump = false;
     public bool isRun = false;
+
+    private bool isGround;
+    [SerializeField] Transform pos;
+    [SerializeField] float radius;
+    [SerializeField] LayerMask layer;
 
     float deathCooldown = 0f;
 
@@ -69,6 +77,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        
+
         if (IsDie)
         {
             if (deathCooldown <= 0)
@@ -85,11 +95,15 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            if (isGround == true && Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                isJump = true;
                 //SoundManager.PlayClip(SoundManager.instance.jumpClip); 사운드매니저 삽입후 주석해제
-
+                if (isJump == true && isDoubleJump == false)
+                {
+                    isDoubleJump = true;
+                }
+                isJump = true;
+                
 
             }
 
@@ -109,12 +123,13 @@ public class Player : MonoBehaviour
         animator.SetBool("isRun", true);
         Vector3 velocity = _rigidbody.velocity; // 직접 _rigidbody.velocity.x = ...처럼 쓰는 것은 불가능하기 때문
         velocity.x = speed; // rigidbody.velocity.x에 speed 값을 할당
-
+        isGround = Physics2D.OverlapCircle(pos.position, radius, layer); // vector2 point, float radiut, int layer
 
         if (isJump) // 점프 중이라면
         {
             animator.SetBool("isJump", true);
             velocity.y += speed; // rigidbody.velocity.y 값에 속도값을 더한다
+
 
             animator.SetBool("isJump", false);
             isJump = false;
@@ -122,21 +137,44 @@ public class Player : MonoBehaviour
             Debug.Log("jump");
         }
 
+        if (isDoubleJump) // 더블점프 중이라면
+        {
+            animator.SetBool("isJump", true);
+            velocity.y += speed; // rigidbody.velocity.y 값에 속도값을 더한다
+
+            animator.SetBool("isJump", false);
+            isJump = false;
+
+            Debug.Log("Dobulejump");
+        }
+
+
         if (isSliding)
         {
             boxCollider.size = slidingColliderSize;
             animator.SetBool("isSliding", true);
 
             Debug.Log("sliding");
-        }
-        else
-        {
-            boxCollider.size = originalColliderSize;
-            animator.SetBool("isSlding", false);
-            isSliding = false;
-        }
 
+            StartCoroutine(SlideCoroutine());
+        }
         _rigidbody.velocity = velocity;
+    }
+    private IEnumerator SlideCoroutine()
+    {
+        Debug.Log("슬라이드 시작");
+        isSliding = true;
+
+        boxCollider.size = slidingColliderSize;
+        animator.SetBool("isSliding", true);
+
+        Debug.Log("sliding");
+
+        yield return new WaitForSeconds(0.5f);
+
+        boxCollider.size = originalColliderSize;
+        animator.SetBool("isSliding", false);
+        isSliding = false;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
