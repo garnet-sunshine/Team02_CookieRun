@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
-    private Camera camera;
+    private Camera playercamera;
     private UIManager uiManager;
 
     // 점수
@@ -29,7 +29,7 @@ public class PlayerController : BaseController
     protected override void Start()
     {
         base.Start();
-        camera = Camera.main;
+        playercamera = Camera.main;
         originalScale = transform.localScale;
         currentHealth = maxHealth;
 
