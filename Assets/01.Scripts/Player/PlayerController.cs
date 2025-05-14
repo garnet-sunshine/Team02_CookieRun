@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ public class PlayerController : BaseController
 {
     private Camera camera;
     private UIManager uiManager;
-    private HealthBar healthBar;
 
     // 점수
     public int score = 0;
@@ -34,14 +34,13 @@ public class PlayerController : BaseController
         currentHealth = maxHealth;
 
         uiManager = FindObjectOfType<UIManager>();
-        healthBar.UpdateHealth(currentHealth, maxHealth);
     }
 
     protected override void FixedUpdate()
     {
-        base.FixedUpdate(); 
+        base.FixedUpdate();
 
-        _rigidbody.velocity = movementDirection * moveSpeed;  
+        _rigidbody.velocity = movementDirection * moveSpeed;
     }
     protected override void HandleAction()
     {
@@ -56,20 +55,6 @@ public class PlayerController : BaseController
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        if (uiManager != null)
-        {
-            healthBar.UpdateHealth(currentHealth, maxHealth); 
-        }
-
-        if (currentHealth <= 0)
-        {
-            Die(); 
-        }
-    }
 
     public void AddScore(int amount)
     {
@@ -91,7 +76,7 @@ public class PlayerController : BaseController
         isSpeedBoosted = true;
         isDestroyMode = true;  // 파괴 모드 활성화
 
-      
+
         moveSpeed += amount;
 
         yield return new WaitForSeconds(duration);
@@ -136,4 +121,3 @@ public class PlayerController : BaseController
         Debug.Log("Player가 사망했습니다!");
     }
 }
-
