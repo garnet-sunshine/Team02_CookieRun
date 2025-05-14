@@ -4,10 +4,31 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
+using Unity.Mathematics;
 
 
 public class HealthBar : MonoBehaviour
 {
+    public float damage = 20f;
+
+    internal void TakeDamage(float damage, int currentHP, int maxHP)
+    {
+        currentHP -= (int)damage;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        UpdateHPBar();
+
+        if (currentHP <= 0)
+        {
+
+            GameManager.Instance.OnGameOver();
+        }
+    }
+
+    private void UpdateHPBar()
+    {
+        throw new NotImplementedException();
+    }
 
     //[SerializeField] private Slider healthSlider; // 체력바 슬라이더
 
@@ -19,7 +40,7 @@ public class HealthBar : MonoBehaviour
     //    }
     //}
 
-public class HPBarController : MonoBehaviour
+    public class HPBarController : MonoBehaviour
 {
     [SerializeField] private Slider hpSlider;
 
@@ -32,18 +53,6 @@ public class HPBarController : MonoBehaviour
         UpdateHPBar();
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHP -= damage;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        UpdateHPBar();
-
-        if (currentHP <= 0)
-        {
-       
-            GameManager.Instance.OnGameOver();
-        }
-    }
 
     public void Heal(int amount)
     {
