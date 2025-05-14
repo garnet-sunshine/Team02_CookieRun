@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] private PauseUIManager pauseUIManager;
-
 
     [Header("StartScene UI")]
     public GameObject startCanvas;
@@ -84,17 +82,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
     }
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0f;
-        pauseUIManager.ShowPauseUI();
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1f;
-        pauseUIManager.HidePauseUI();
-    }
 }
-
