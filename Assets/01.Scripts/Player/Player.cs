@@ -56,23 +56,7 @@ public class Player : MonoBehaviour
         _rigidbody = transform.GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
 
-        JumpBtn = GetComponent<Button>();
-        JumpBtn.onClick.AddListener(OnClickJumpButton);
-
-        SlideBtn = GetComponent<Button>();
-        SlideBtn.onClick.AddListener(OnClickSlideButton);
-
-        if (animator == null)
-        {
-            Debug.LogError("Not Founded Animator");
-        }
-
-        if (_rigidbody == null)
-        {
-            Debug.LogError("Not Founded Rigidbody");
-        }
-        if (boxCollider == null)
-            Debug.LogError("Not Founded BoxCollider2D");
+        
     }
 
     void Update()
@@ -194,5 +178,11 @@ public class Player : MonoBehaviour
         }
 
     }
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Finish"))
+        {
+            GameManager.Instance.OnGameOver();
+        }
+    }
 }

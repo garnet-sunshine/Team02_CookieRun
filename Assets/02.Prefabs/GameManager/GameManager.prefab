@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6193561173030111422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7401720878720344171}
+  - component: {fileID: 2024054448716173448}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7401720878720344171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6193561173030111422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2024054448716173448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6193561173030111422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b77de0a3bf87d84daa854c86261de62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startCanvas: {fileID: 85740481811313819, guid: 60c6698e9c168c24fa1973aa68a4af21, type: 3}
+  stageCanvas: {fileID: 7094036534649525556, guid: f4ec70ff6a0a0404484a7d9f0a66ba1a, type: 3}
+  loadingCanvas:
+  - {fileID: 3871106049001409144, guid: d64035c68cd2fe54ea8e81efa999bfc9, type: 3}
+  - {fileID: 2001292593256274450, guid: dfcce12fd69a66147a67b419101edb12, type: 3}
+  - {fileID: 1444338816758257560, guid: 210f145f290df614f9af0c02a27d6b90, type: 3}
+  playCanvas: {fileID: 8390169900389360629, guid: f4aadb4426ee0984faf12375e380211a, type: 3}
+  gameOverCanvas: {fileID: 2953416953528458856, guid: ff467dfb099922a4e828d302e95cfabe, type: 3}
+  stageBGMs:
+  - {fileID: 8300000, guid: a406caefd480c18468cff256f4a1b902, type: 3}
+  - {fileID: 8300000, guid: ceb3c6c62daf6234196a56166f572c1b, type: 3}
+  - {fileID: 8300000, guid: 49c9784fa6fea2c47908d6047a212435, type: 3}
