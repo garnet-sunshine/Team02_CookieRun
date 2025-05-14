@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     [Header("Stage BGM")]
     public AudioClip[] stageBGMs;
 
+    [SerializeField] private PauseUIManager pauseUIManager;
+    public HealthBar healthBar;
+
     private void Awake()
     {
         if (Instance == null)
@@ -32,13 +35,6 @@ public class GameManager : MonoBehaviour
     }
 
     // StartScene 흐름
-
-    public void TakeDamage(int amount)
-    {
-        healthBar.TakeDamage(amount);
-    }
-
-    public HealthBar healthBar;
 
     public void OnClickStartGame()
     {
@@ -81,13 +77,52 @@ public class GameManager : MonoBehaviour
 
     public void OnGameOver()
     {
+        Debug.Log("Game Over");
         Time.timeScale = 0f;
         playCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
+
+        if (playCanvas != null)
+        {
+            playCanvas.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("playCanvas가 연결되지 않았습니다!");
+        }
+
+        if (gameOverCanvas != null)
+        {
+            gameOverCanvas.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("gameOverCanvas가 연결되지 않았습니다!");
+        }
     }
 
     public void OnGameOverConfirm()
     {
         SceneManager.LoadScene("StartScene");
+    }
+
+    public void TakeDamage(int amount)
+    {
+        healthBar.TakeDamage(amount);
+    }
+
+
+   
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        pauseUIManager.ShowPauseUI();  // pauseCanvas 활성화
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        pauseUIManager.HidePauseUI();  // pauseCanvas 비활성화
     }
 }
