@@ -1,51 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System;
-using Unity.Mathematics;
-
 
 public class HealthBar : MonoBehaviour
-{
-    public float damage = 20f;
-
-    internal void TakeDamage(float damage, int currentHP, int maxHP)
-    {
-        currentHP -= (int)damage;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        UpdateHPBar();
-
-        if (currentHP <= 0)
-        {
-
-            GameManager.Instance.OnGameOver();
-        }
-    }
-
-    private void UpdateHPBar()
-    {
-        throw new NotImplementedException();
-    }
-
-    //[SerializeField] private Slider healthSlider; // 체력바 슬라이더
-
-    //public void UpdateHealth(int currentHealth, int MaxHealth)
-    //{
-    //    if (healthSlider != null)
-    //    {
-    //        healthSlider.value = (float)currentHealth / MaxHealth;
-    //    }
-    //}
-
-    public class HPBarController : MonoBehaviour
 {
     [SerializeField] private Slider hpSlider;
 
     private int maxHP = 100;
     private int currentHP;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TakeDamage(10);
+        }
+    }
 
     void Start()
     {
@@ -53,6 +22,24 @@ public class HealthBar : MonoBehaviour
         UpdateHPBar();
     }
 
+    public void SetMaxHP(int hp)
+    {
+        maxHP = hp;
+        currentHP = hp;
+        UpdateHPBar();
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHP -= amount;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        UpdateHPBar();
+
+        if (currentHP <= 0)
+        {
+            GameManager.Instance.OnGameOver();
+        }
+    }
 
     public void Heal(int amount)
     {
@@ -63,15 +50,7 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateHPBar()
     {
-        hpSlider.value = (float)currentHP / maxHP;
+        if (hpSlider != null)
+            hpSlider.value = (float)currentHP / maxHP;
     }
-
-    public void SetMaxHP(int hp)
-    {
-        maxHP = hp;
-        currentHP = hp;
-        UpdateHPBar();
-    }
-}
-
 }
