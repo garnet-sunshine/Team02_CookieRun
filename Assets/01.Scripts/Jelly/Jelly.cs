@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Jelly : MonoBehaviour
 {
-    public GameObject[] coinsPrefab; // 코인 프리펩 연결
     public int scoreValue = 10; // 젤리 1개당 점수
 
 
