@@ -12,8 +12,11 @@ public class Player : MonoBehaviour
     Animator animator = null;
     Rigidbody2D _rigidbody = null;
     BoxCollider2D boxCollider = null;
+
     public Vector2 originalColliderSize;
     public Vector2 slidingColliderSize;
+    public Vector2 originalColliderOffset;
+    public Vector2 slidingColliderOffset;
 
     public float jumpForce = 6f; // 점프 파워
     public float speed = 3f; // 정면이동 스피드
@@ -91,10 +94,21 @@ public class Player : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 isSliding = true;
+                boxCollider.size = slidingColliderSize;
+                boxCollider.offset = slidingColliderOffset;
+
+                animator.SetBool("isSliding", true);
                 //SoundManager.PlayClip(SoundManager.instance.slideClip); 사운드매니저 삽입후 주석해제
+            }
+            else
+            {
+                isSliding = false;
+                boxCollider.size = originalColliderSize;
+                boxCollider.offset = originalColliderOffset;
+                animator.SetBool("isSliding", false);
             }
         }
     }
@@ -136,11 +150,12 @@ public class Player : MonoBehaviour
         if (isSliding)
         {
             boxCollider.size = slidingColliderSize;
+            boxCollider.offset = slidingColliderOffset;
             animator.SetBool("isSliding", true);
 
             Debug.Log("sliding");
 
-            StartCoroutine(SlideCoroutine());
+            //StartCoroutine(SlideCoroutine());
         }
         _rigidbody.velocity = velocity;
     }
@@ -150,6 +165,8 @@ public class Player : MonoBehaviour
         isSliding = true;
 
         boxCollider.size = slidingColliderSize;
+        boxCollider.offset = slidingColliderOffset;
+
         animator.SetBool("isSliding", true);
 
         Debug.Log("sliding");
@@ -157,6 +174,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         boxCollider.size = originalColliderSize;
+        boxCollider.offset = originalColliderOffset;
+
         animator.SetBool("isSliding", false);
         isSliding = false;
     }
