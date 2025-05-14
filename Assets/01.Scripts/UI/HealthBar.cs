@@ -51,6 +51,15 @@ public class HealthBar : MonoBehaviour
     private void UpdateHPBar()
     {
         if (hpSlider != null)
-            hpSlider.value = (float)currentHP / maxHP;
+        {
+            float ratio = (float)currentHP / maxHP;
+            hpSlider.value = ratio;
+
+            // 색도 바꾸고
+            hpSlider.fillRect.GetComponent<Image>().color =
+                Color.Lerp(Color.red, new Color(0.4f, 0.2f, 0.1f), 1 - ratio);
+
+            Debug.Log($"[HPBar] Slider.value = {ratio}");
+        }
     }
-}
+    }
