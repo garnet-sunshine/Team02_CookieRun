@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void OnGameOver()
     {
+        Time.timeScale = 0f;
         playCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
     }
