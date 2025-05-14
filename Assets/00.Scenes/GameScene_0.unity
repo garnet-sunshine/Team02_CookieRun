@@ -6084,7 +6084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137e1f8e133de9344941ade240212ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinsPrefab: []
   scoreValue: 10
 --- !u!1001 &1091934267
 PrefabInstance:
