@@ -2150,11 +2150,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3472638374250755061, guid: 1b19651ddbf016140bd5ea146d653bd6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.21
+      value: -4.96
       objectReference: {fileID: 0}
     - target: {fileID: 3472638374250755061, guid: 1b19651ddbf016140bd5ea146d653bd6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.423926
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 3472638374250755061, guid: 1b19651ddbf016140bd5ea146d653bd6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2188,20 +2188,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4486820737361115926, guid: 1b19651ddbf016140bd5ea146d653bd6, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815355253911281118, guid: 1b19651ddbf016140bd5ea146d653bd6, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7060202381012322281, guid: 1b19651ddbf016140bd5ea146d653bd6, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7060202381012322281, guid: 1b19651ddbf016140bd5ea146d653bd6, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6152,6 +6140,10 @@ PrefabInstance:
       propertyPath: score
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5940133372027454480, guid: 58417b9b7a2ab40459f29edcad478835, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6003395633185233093, guid: 58417b9b7a2ab40459f29edcad478835, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7608,7 +7600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4557fad78fbec4fa689dab87d8bcbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
 --- !u!4 &1680198681
 Transform:
   m_ObjectHideFlags: 0

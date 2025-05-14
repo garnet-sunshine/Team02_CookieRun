@@ -35,6 +35,13 @@ public class GameManager : MonoBehaviour
 
     // StartScene »Â∏ß
 
+    public void TakeDamage(int amount)
+    {
+        healthBar.TakeDamage(amount);
+    }
+
+    public HealthBar healthBar;
+
     public void OnClickStartGame()
     {
         startCanvas.SetActive(false);
