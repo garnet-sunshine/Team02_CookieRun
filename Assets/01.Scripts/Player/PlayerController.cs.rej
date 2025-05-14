@@ -1,0 +1,12 @@
+diff a/Assets/01.Scripts/Player/PlayerController.cs b/Assets/01.Scripts/Player/PlayerController.cs	(rejected hunks)
+@@ -34,6 +34,10 @@
+          currentHealth = maxHealth;
+  
+          uiManager = FindObjectOfType<UIManager>();
+++<<<<<<< HEAD
+++=======
++         //healthBar.UpdateHealth(currentHealth, maxHealth);
+++>>>>>>> 521e423 (스테이지 2 완성)
+      }
+  
+      protected override void FixedUpdate()
