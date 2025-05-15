@@ -892,6 +892,10 @@ PrefabInstance:
       propertyPath: gameOverCanvas
       value: 
       objectReference: {fileID: 687514662}
+    - target: {fileID: 2024054448716173448, guid: f24dcb8f38c7913418a7aa7430455c0f, type: 3}
+      propertyPath: pauseUIManager
+      value: 
+      objectReference: {fileID: 686927868}
     - target: {fileID: 6193561173030111422, guid: f24dcb8f38c7913418a7aa7430455c0f, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -4352,7 +4356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e77d32f3425c04c89fed8feb01eb37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseCanvas: {fileID: 1056067053230117348, guid: 312f0c80886f99640af1335a6253ae1c, type: 3}
+  pauseCanvas: {fileID: 686927866}
 --- !u!1 &687514662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8955542051360325370, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
@@ -13301,6 +13305,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 758695546630733419, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 758695546630733419, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1293007694}
+    - target: {fileID: 758695546630733419, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 758695546630733419, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1284627848658106317, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
       propertyPath: hpbar
       value: 
@@ -13365,6 +13385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2647387417909737642, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3460483500794730088, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
       propertyPath: m_Value
       value: 1
@@ -13372,6 +13396,22 @@ PrefabInstance:
     - target: {fileID: 5224147709890047367, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
       propertyPath: hpbar
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433276337292345764, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433276337292345764, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1293007694}
+    - target: {fileID: 5433276337292345764, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433276337292345764, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7509139902255121933, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
       propertyPath: m_fontColor.b
@@ -13475,7 +13515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8955542051360325370, guid: b62dfdcdb1f03cf4cb42eba34f59bd8c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
