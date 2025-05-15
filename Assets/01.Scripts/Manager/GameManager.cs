@@ -79,8 +79,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over");
         Time.timeScale = 0f;
-        playCanvas.SetActive(false);
-        gameOverCanvas.SetActive(true);
 
         if (playCanvas != null)
         {
@@ -109,14 +107,12 @@ public class GameManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         healthBar.TakeDamage(amount);
-    }
-
-
-   
+    }   
 
     public void PauseGame()
     {
         Time.timeScale = 0f;
+        Debug.Log($"PauseGame");
         pauseUIManager.ShowPauseUI();  // pauseCanvas 활성화
     }
 
@@ -124,5 +120,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseUIManager.HidePauseUI();  // pauseCanvas 비활성화
+    }
+
+    public void QuitToTitle()
+    {
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene("StartScene"); 
     }
 }

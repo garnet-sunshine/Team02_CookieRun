@@ -159,6 +159,7 @@ public class Player : MonoBehaviour
         }
         _rigidbody.velocity = velocity;
     }
+
     private IEnumerator SlideCoroutine()
     {
         Debug.Log("슬라이드 시작");
@@ -201,6 +202,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Finish"))
         {
+            Debug.Log("Finish에 닿음, 게임오버");
             GameManager.Instance.OnGameOver();
         }
     }
