@@ -111,15 +111,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8caf74eb770f4489545ff72d6590e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  moveSpeed: 5
+  maxHealth: 100
+  currentHealth: 0
+  isDestroyMode: 0
   originalColliderSize: {x: 1, y: 1}
   slidingColliderSize: {x: 1, y: 0.3}
   originalColliderOffset: {x: 0, y: -0.17}
   slidingColliderOffset: {x: 0, y: -0.51}
-  jumpForce: 3
+  jumpForce: 6
   speed: 3
-  slideDuration: 1
+  isSliding: 0
   isJump: 0
   isDoubleJump: 0
+  isRun: 0
+  isGround: 0
   pos: {fileID: 5550226951001731954}
   radius: 0.35
   layer:
