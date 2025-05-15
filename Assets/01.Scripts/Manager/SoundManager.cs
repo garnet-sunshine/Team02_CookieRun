@@ -56,9 +56,21 @@ public class SoundManager : MonoBehaviour
     // 효과음 재생
     public static void PlayClip(AudioClip clip)
     {
-        SoundSource obj = Instantiate(instance.soundSourcePrefab); // SoundSource프리팹을 생성
-        SoundSource soundSource = obj.GetComponent<SoundSource>(); // 사운드 소스에 접근
-        soundSource.Play(clip, instance.soundEffectVolume, instance.soundEffectPitchVariance); // 사운드 재생 완료 후 자동 제거
+        if (clip == null)
+        {
+            Debug.LogWarning("PlayClip()에 null 클립이 전달됨");
+            return;
+        }
+
+        if (instance.soundSourcePrefab == null)
+        {
+            Debug.LogError("SoundSource 프리팹이 할당되지 않았습니다.");
+            return;
+        }
+
+        SoundSource obj = Instantiate(instance.soundSourcePrefab);
+        SoundSource soundSource = obj.GetComponent<SoundSource>();
+        soundSource.Play(clip, instance.soundEffectVolume, instance.soundEffectPitchVariance);
     }
 
     // 외부에서 Volume값을 넘기면 오디오 소스에 반영
