@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TakeDamage(10);
+            TakeDamage(20);
         }
     }
 
@@ -37,6 +37,7 @@ public class HealthBar : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            Debug.Log("hp=0, 게임 오버");
             GameManager.Instance.OnGameOver();
         }
     }
@@ -50,8 +51,10 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateHPBar()
     {
-        if (hpSlider != null)
+        Debug.Log("테스트입니다.");
+     //   if (hpSlider != null)
         {
+            Debug.Log("테스트입니다2.");
             float ratio = (float)currentHP / maxHP;
             hpSlider.value = ratio;
 
