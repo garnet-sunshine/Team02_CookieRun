@@ -56,3 +56,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a406caefd480c18468cff256f4a1b902, type: 3}
   - {fileID: 8300000, guid: ceb3c6c62daf6234196a56166f572c1b, type: 3}
   - {fileID: 8300000, guid: 49c9784fa6fea2c47908d6047a212435, type: 3}
+  pauseUIManager: {fileID: 0}
+  healthBar: {fileID: 0}

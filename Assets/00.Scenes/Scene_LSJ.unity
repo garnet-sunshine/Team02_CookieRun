@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b77de0a3bf87d84daa854c86261de62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseUIManager: {fileID: 0}
   startCanvas: {fileID: 1103237410}
   stageCanvas: {fileID: 1618227073}
   loadingCanvas:
@@ -472,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6342452982509842336, guid: 8d6f1b4ce92d1dd4d8ab5a6701a9e657, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6583991104642975647, guid: 8d6f1b4ce92d1dd4d8ab5a6701a9e657, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

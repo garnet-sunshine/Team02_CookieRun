@@ -37,6 +37,7 @@ public class HealthBar : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            Debug.Log("hp=0, 게임 오버");
             GameManager.Instance.OnGameOver();
         }
     }
