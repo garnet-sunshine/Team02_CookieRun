@@ -6,11 +6,11 @@ public class PauseUIManager : MonoBehaviour
 
     public void ShowPauseUI()
     {
-        pauseCanvas.SetActive(true);
+        pauseCanvas.SetActive(true);  //일시정지 UI 띄움
     }
 
     public void HidePauseUI()
     {
-        pauseCanvas.SetActive(false);
+        pauseCanvas.SetActive(false); //일시정지 UI 닫음
     }
 }
