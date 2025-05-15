@@ -6,6 +6,7 @@ public class PauseUIManager : MonoBehaviour
 
     public void ShowPauseUI()
     {
+        Debug.Log("ShowPauseUI 호출");
         pauseCanvas.SetActive(true);  //일시정지 UI 띄움
     }
 
