@@ -13,6 +13,24 @@ public class Player : MonoBehaviour
     Rigidbody2D _rigidbody = null;
     BoxCollider2D boxCollider = null;
 
+    // 점수
+    public int score = 0;
+
+    // 속도 증가
+    public float moveSpeed = 5f;   // 기존 속도
+    private bool isSpeedBoosted = false;
+
+    // 거대화
+    private Vector3 originalScale;
+    private bool isGiant = false;
+
+    // 체력 관련
+    public int maxHealth = 100;
+    public int currentHealth;
+
+    // 파괴 모드
+    public bool isDestroyMode = false;
+
     public Vector2 originalColliderSize;
     public Vector2 slidingColliderSize;
     public Vector2 originalColliderOffset;
@@ -84,14 +102,14 @@ public class Player : MonoBehaviour
         {
             if (isGround == true && Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                //SoundManager.PlayClip(SoundManager.instance.jumpClip); 사운드매니저 삽입후 주석해제
+              
                 if (isJump == true && isDoubleJump == false)
                 {
                     isDoubleJump = true;
                 }
                 isJump = true;
-                
 
+                SoundManager.PlayClip(SoundManager.instance.jumpClip);
             }
 
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -101,7 +119,7 @@ public class Player : MonoBehaviour
                 boxCollider.offset = slidingColliderOffset;
 
                 animator.SetBool("isSliding", true);
-                //SoundManager.PlayClip(SoundManager.instance.slideClip); 사운드매니저 삽입후 주석해제
+                SoundManager.PlayClip(SoundManager.instance.slideClip);
             }
             else
             {
@@ -192,7 +210,6 @@ public class Player : MonoBehaviour
 
         if (IsDie)
         {
-            //SoundManager.PlayClip(SoundManager.instance.dieClip); 사운드매니저 삽입후 주석해제
             return;
         }
 

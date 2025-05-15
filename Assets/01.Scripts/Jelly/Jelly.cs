@@ -20,11 +20,11 @@ public class Jelly : MonoBehaviour
 
             PlayerController player = collision.GetComponent<PlayerController>(); // PlayerController스크립트 접근
 
+            SoundManager.PlayClip(SoundManager.instance.jellyClip); // 젤리 먹는 소리 재생
+
             if (player != null)
             {
                 player.AddScore(scoreValue); // 점수 추가
-
-                SoundManager.PlayClip(SoundManager.instance.jellyClip); // 젤리 먹는 소리 재생
             }
 
             Destroy(gameObject); // 한번 먹으면 사라지게 만듬
