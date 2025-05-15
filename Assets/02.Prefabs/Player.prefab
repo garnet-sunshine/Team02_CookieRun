@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1720334642376981513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.901, z: 0}
+  m_LocalPosition: {x: 0, y: -0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -115,12 +115,11 @@ MonoBehaviour:
   slidingColliderSize: {x: 1, y: 0.3}
   originalColliderOffset: {x: 0, y: -0.17}
   slidingColliderOffset: {x: 0, y: -0.51}
-  jumpForce: 15
+  jumpForce: 3
   speed: 3
-  isSliding: 0
+  slideDuration: 1
   isJump: 0
   isDoubleJump: 0
-  isRun: 0
   pos: {fileID: 5550226951001731954}
   radius: 0.35
   layer:
@@ -227,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 7637910522091690388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

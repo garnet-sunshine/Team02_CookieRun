@@ -1,163 +1,150 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.PlasticSCM.Editor.WebApi;
+using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 public class Player : MonoBehaviour
 {
     Animator animator = null;
     Rigidbody2D _rigidbody = null;
     BoxCollider2D boxCollider = null;
-
+    // 점수
+    public int score = 0;
+    // 속도 증가
+    public float moveSpeed = 5f;   // 기존 속도
+    private bool isSpeedBoosted = false;
+    // 거대화
+    private Vector3 originalScale;
+    private bool isGiant = false;
+    // 체력 관련
+    public int maxHealth = 100;
+    public int currentHealth;
+    // 파괴 모드
+    public bool isDestroyMode = false;
     public Vector2 originalColliderSize;
     public Vector2 slidingColliderSize;
     public Vector2 originalColliderOffset;
     public Vector2 slidingColliderOffset;
-
     public float jumpForce = 6f; // 점프 파워
     public float speed = 3f; // 정면이동 스피드
-    public float slideDuration = 1f;
-
+    public bool isSliding = false;
     public bool isJump = false;
     public bool isDoubleJump = false;
-
+    public bool isRun = false;
+    public bool isGround;
     [SerializeField] Transform pos;
     [SerializeField] float radius;
     [SerializeField] LayerMask layer;
-
     float deathCooldown = 0f;
-
     public bool IsDie = false;
-
     public bool godMode = false;
-
+    Button JumpBtn;
+    Button SlideBtn;
     public void OnClickJumpButton() // 점프버튼 실행시 나오는 이벤트
     {
         Debug.Log("JumpButton Click");
-        Jump();
+        isJump = true;
     }
-
     public void OnClickSlideButton() // 점프버튼 실행시 나오는 이벤트
     {
         Debug.Log("SlideButton Click");
-        Slide();
+        isSliding = true;
     }
-
     void Start()
     {
-
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-
-        
     }
-
     void Update()
     {
         if (IsDie)
         {
-            if (deathCooldown <= 0)
+            deathCooldown -= Time.deltaTime;
+            if (deathCooldown <= 0 && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
             {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    // 게임 재시작
-                }
+                // 게임 재시작
             }
-            else
-            {
-                deathCooldown -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                //SoundManager.PlayClip(SoundManager.instance.jumpClip); 사운드매니저 삽입후 주석해제
-                Jump();
-            }
-
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            {
-                Slide();
-                //SoundManager.PlayClip(SoundManager.instance.slideClip); 사운드매니저 삽입후 주석해제
-            }
-        }
-    }
-
-    private void Jump()
-    {
-        if(isJump && isDoubleJump)
-        {
             return;
         }
-        if (isJump && isDoubleJump == false)
+        bool inputPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0);
+        if (inputPressed)
         {
-            DoubleJump();
+            if (isGround)
+            {
+                isJump = true;           // 첫 점프 예약
+                isDoubleJump = false;    // 더블점프 초기화
+            }
+            else if (!isDoubleJump)
+            {
+                isJump = true;           // 더블점프 예약
+                isDoubleJump = true;     // 더블점프 사용 처리
+            }
+        }
+        // 슬라이드 처리
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            isSliding = true;
+            boxCollider.size = slidingColliderSize;
+            boxCollider.offset = slidingColliderOffset;
+            animator.SetBool("isSliding", true);
         }
         else
         {
-            isJump = true;
-            Debug.Log("JUMP");
-            animator.SetBool("isJump", true);
-            AddJumpVelocity();
+            isSliding = false;
+            boxCollider.size = originalColliderSize;
+            boxCollider.offset = originalColliderOffset;
+            animator.SetBool("isSliding", false);
         }
     }
-
-    private void DoubleJump()
+    public void FixedUpdate()
     {
-        isDoubleJump = true;
-        Debug.Log("DOUBLE JUMP");
-        AddJumpVelocity();
-    }
-
-    private void AddJumpVelocity()
-    {
-        Vector2 velocity = _rigidbody.velocity;
-        velocity.y += jumpForce;
+        if (IsDie) return;
+        isGround = Physics2D.OverlapCircle(pos.position, radius, layer);
+        if (isGround)
+        {
+            animator.SetBool("isJump", false); // 점프 애니메이션 종료
+        }
+        animator.SetBool("isRun", isGround);
+        Vector3 velocity = _rigidbody.velocity;
+        velocity.x = speed;
+        if (isJump)
+        {
+            velocity.y = jumpForce;
+            animator.SetBool("isJump", true);
+            Debug.Log(isDoubleJump ? "더블점프" : "점프");
+            isJump = false; // 실행 후 초기화
+        }
+        if (isSliding)
+        {
+            boxCollider.size = slidingColliderSize;
+            boxCollider.offset = slidingColliderOffset;
+            animator.SetBool("isSliding", true);
+            Debug.Log("sliding");
+        }
         _rigidbody.velocity = velocity;
     }
-
-    private void Slide()
-    {
-        StartCoroutine(SlideCoroutine());
-    }
-    private IEnumerator SlideCoroutine()
-    {
-        boxCollider.size = slidingColliderSize;
-        boxCollider.offset = slidingColliderOffset;
-        animator.SetBool("isSliding", true);
-
-        Debug.Log("sliding");
-
-        yield return new WaitForSeconds(slideDuration);
-
-        boxCollider.size = originalColliderSize;
-        boxCollider.offset = originalColliderOffset;
-
-        animator.SetBool("isSliding", false);
-    }
-
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJump = isDoubleJump = false;
-            animator.SetBool("isJump", false);
-        }
-
+        //if (collision.gameObject.CompareTag("Ground"))
+        //{
+        //    isRun = true;
+        //}
         if (godMode)
             return;
-
         if (IsDie)
         {
-            //SoundManager.PlayClip(SoundManager.instance.dieClip); 사운드매니저 삽입후 주석해제
             return;
         }
-
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Finish"))
         {
+            Debug.Log("Finish에 닿음, 게임오버");
             GameManager.Instance.OnGameOver();
         }
     }
